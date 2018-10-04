@@ -12,24 +12,12 @@
 */
 
 Auth::routes();
-/* CoreUI templates */
-
 Route::middleware('auth')->group(function() {
-	Route::view('/', 'panel.blank');
-	// Section CoreUI elements
-	Route::view('/sample/dashboard','samples.dashboard');
-	Route::view('/sample/buttons','samples.buttons');
-	Route::view('/sample/social','samples.social');
-	Route::view('/sample/cards','samples.cards');
-	Route::view('/sample/forms','samples.forms');
-	Route::view('/sample/modals','samples.modals');
-	Route::view('/sample/switches','samples.switches');
-	Route::view('/sample/tables','samples.tables');
-	Route::view('/sample/tabs','samples.tabs');
-	Route::view('/sample/icons-font-awesome', 'samples.font-awesome-icons');
-	Route::view('/sample/icons-simple-line', 'samples.simple-line-icons');
-	Route::view('/sample/widgets','samples.widgets');
-	Route::view('/sample/charts','samples.charts');
+	Route::get('/', 'Table\TableController@index');
+	Route::get('/login', 'Auth\LoginController@login');
+	Route::get('admin/users', 'Admin\UserController@index')->name('admin.user.index');
+	Route::get('admin/users/add', 'Admin\UserController@list')->name('admin.user.add');
+	Route::get('admin/users/remove/{id}', 'Admin\UserController@list')->name('admin.user.remove');
 });
 // Section Pages
 Route::view('/sample/error404','errors.404')->name('error404');
