@@ -21,7 +21,7 @@
             <a class="nav-link" href="/sample/modals"><i class="icon-puzzle"></i> Item Set</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/sample/switches"><i class="icon-puzzle"></i> Customization</a>
+            <a class="nav-link" href="{{ route('sauces.index') }}"><i class="icon-puzzle"></i> Customization</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('badges.index') }}"><i class="icon-puzzle"></i> Badge</a>

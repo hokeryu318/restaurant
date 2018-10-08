@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function() {
 	//items
 	Route::resource('admin/items', 'Admin\ItemController');
 	Route::resource('admin/badges', 'Admin\BadgeController');
+	Route::resource('admin/sauces', 'Admin\SauceController');
 });
 // Section Pages
 Route::view('/sample/error404','errors.404')->name('error404');

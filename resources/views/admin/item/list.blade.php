@@ -14,7 +14,9 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Item name</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Category</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -23,10 +25,12 @@
                     <tr>
                       <td>{{ $item->id }}</td>
                       <td>{{ $item->name }}</td>
+                      <td>{{ $item->price }}</td>
+                      <td>{{ $item->name }}</td>
                       <td>
                         <span>
-                            <a class="badge badge-success" href="{{ route('categories.edit', ['id' => $item->id]) }}">Edit</a>
-                            <a class="badge badge-info" href="{{ route('categories.show', ['id' => $item->id]) }}">Sub Categories</a>
+                            <a class="badge badge-success" href="{{ route('items.edit', ['id' => $item->id]) }}">Edit</a>
+                            <a class="badge badge-info" href="{{ route('items.show', ['id' => $item->id]) }}">Details</a>
                         </span>
                       </td>
                     </tr>
@@ -35,7 +39,7 @@
             </table>
           </div>
           <div class="card-footer">
-              <a class="btn btn-sm btn-primary" href="{{ route('categories.create') }}"><i class="fa fa-dot-circle-o"></i> Add a Category</a>
+              <a class="btn btn-sm btn-primary" href="{{ route('items.create') }}"><i class="fa fa-dot-circle-o"></i> Add a Food</a>
           </div>
         </div>
       </div>

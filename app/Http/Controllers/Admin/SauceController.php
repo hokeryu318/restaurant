@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
-use App\Models\Category;
-use App\Services\CategoryService;
+use App\Models\Sauce;
 
-class CategoryController extends Controller
+class SauceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $items = Category::where('parent_id' , 0)->get();
-        return view('admin.category.list')->with('items', $items);
+        $sauces = Sauce::all();
+        return view('admin.sauce.list')->with('items', $sauces);
     }
 
     /**
@@ -28,8 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $items = CategoryService::parentCategories();
-        return view('admin.category.add')->with('parents', $items);
+        //
+        return view('admin.sauce.add');
     }
 
     /**
@@ -41,11 +40,11 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-        $category = new Category();
-        $category->parent_id = $request->parent;
-        $category->name = $request->name;
-        $category->save();
-        return redirect()->route('categoires.index');
+        $sauce = new Sauce();
+        $sauce->name = $request->name;
+        $sauce->price = $request->price;
+        $sauce->save();
+        return redirect()->route('sauces.index');
     }
 
     /**
@@ -57,8 +56,6 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
-        $items = Category::where('parent_id' , $id)->get();
-        return view('admin.category.list')->with('items', $items);
     }
 
     /**
@@ -70,9 +67,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
-        $item = Category::find($id);
-        $parents = CategoryService::parentCategories($id);
-        return view('admin.category.edit')->with('parents', $parents)->with('item', $item);
+        $sauce = Sauce::find($id);
+        return view('admin.sauce.edit')->with('sauce', $sauce);
     }
 
     /**
@@ -84,11 +80,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $item = Category::find($id);
-        $item->parent_id = $request->parent;
-        $item->name = $request->name;
-        $item->save();
-        return redirect()->route('categoires.index');
+        //
+        $sauce = Sauce::find($id);
+        $sauce->name = $request->name;
+        $sauce->price = $request->price;
+        $sauce->save();
+        return redirect()->route('sauces.index');
     }
 
     /**
@@ -100,9 +97,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
-        $item = Category::find($id);
-        $parent = $item->parent_id;
-        $item->delete();
-        return redirect()->route('categories.show', ['id' => $id]);
+        $sauce = Sauce::find($id);
+        $sauce->delete();
+        return redirect()->route('sauces.index');
     }
 }

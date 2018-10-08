@@ -28,7 +28,8 @@ class ItemController extends Controller
     public function create()
     {
         //
-        
+        $infos = ItemService::get_info();
+        return view('admin.category.add')->with('parents', $items);
     }
 
     /**
