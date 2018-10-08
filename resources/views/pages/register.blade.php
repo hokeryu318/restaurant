@@ -31,16 +31,11 @@
           <div class="card-body p-4">
             <h1>Register</h1>
             <p class="text-muted">Create your account</p>
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('admin.user.signup') }}">
               {{ csrf_field() }} 
               <div class="input-group mb-3">
                 <span class="input-group-addon"><i class="icon-user"></i></span>
                 <input type="text" name="name" class="form-control" placeholder="Username">
-              </div>              
-  
-              <div class="input-group mb-3">
-                <span class="input-group-addon">@</span>
-                <input type="text" name="email" class="form-control" placeholder="Email">
               </div>
 
               <div class="input-group mb-3">
@@ -50,27 +45,19 @@
 
               <div class="input-group mb-3">
                 <span class="input-group-addon"><i class="icon-lock"></i></span>
-                <input type="password" name="password_confirmation" class="form-control" placeholder="Password">
+                <input type="password" name="password_confirmation" class="form-control" placeholder="Retype Password">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-addon"><i class="icon-user"></i></span>
+                <select class="form-control" name="role">
+                  <option value="1">Reception</option>
+                  <option value="2" selected>Table</option>
+                </select>
               </div>
 
               <button type="submit" class="btn btn-block btn-warning">Create Account</button>
             </form>
-
-            <a href="/login" class="btn btn-block btn-secondary mt-2">You have already an account? Sign in</a>
-          </div>
-          <div class="card-footer p-4">
-            <div class="row">
-              <div class="col-6">
-                <button class="btn btn-block btn-facebook" type="button">
-                  <span>facebook</span>
-                </button>
-              </div>
-              <div class="col-6">
-                <button class="btn btn-block btn-twitter" type="button">
-                  <span>twitter</span>
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </div>

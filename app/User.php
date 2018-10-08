@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'password',
+        'name', 'password', 'role',
     ];
 
     /**
@@ -26,4 +26,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin(){
+        return $this->role == '0';
+    }
+
+    public function isReception(){
+        return $this->role == '1';
+    }
+
+    public function isTable(){
+        return $this->role == '2';
+    }
 }

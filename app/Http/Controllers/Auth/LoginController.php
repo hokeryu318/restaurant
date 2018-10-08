@@ -85,4 +85,13 @@ class LoginController extends Controller {
     {
         return view('pages.login');
     }
+
+    protected function authenticated(Request $request, $user)
+    {
+        if ( $user->isAdmin() ) {// do your margic here
+            return redirect()->route('admin.user');
+        }
+
+        return redirect()->route('admin.user');
+    }
 }

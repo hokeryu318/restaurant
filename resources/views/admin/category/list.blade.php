@@ -7,35 +7,26 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-header">
-            <i class="fa fa-align-justify"></i> User List
+            <i class="fa fa-align-justify"></i> Categories List
           </div>
           <div class="card-body">
             <table class="table table-responsive-sm table-striped">
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>User name</th>
-                  <th>Permission</th>
+                  <th>Category name</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($users as $user)
+                @foreach ($items as $item)
                     <tr>
-                      <td>{{ $user->id }}</td>
-                      <td>{{ $user->name }}</td>
-                      <td> 
-                        @if($user->role == '0')
-                            Admin
-                        @elseif($user->role == '1')
-                            Receiption
-                        @elseif($user->role == '2')
-                            Table
-                        @endif
-                      </td>
+                      <td>{{ $item->id }}</td>
+                      <td>{{ $item->name }}</td>
                       <td>
                         <span>
-                          <a class="badge badge-danger" href="{{ route('admin.user.remove', ['id' => $user->id]) }}">Remove</a>
+                            <a class="badge badge-success" href="{{ route('categories.edit', ['id' => $item->id]) }}">Edit</a>
+                            <a class="badge badge-info" href="{{ route('categories.show', ['id' => $item->id]) }}">Sub Categories</a>
                         </span>
                       </td>
                     </tr>
@@ -44,7 +35,7 @@
             </table>
           </div>
           <div class="card-footer">
-              <a class="btn btn-sm btn-primary" href="{{ route('admin.user.register') }}"><i class="fa fa-dot-circle-o"></i> Add a User</a>
+              <a class="btn btn-sm btn-primary" href="{{ route('categories.create') }}"><i class="fa fa-dot-circle-o"></i> Add a Category</a>
           </div>
         </div>
       </div>
